@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfile"
+    android:orientation="vertical"
+
+    >
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".EditProfile"
+        >
+
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/eFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FirstName"
+            android:inputType="textPersonName"
+            />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/eLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="LastName"
+            android:inputType="textPersonName"
+            />
+
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/eEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="EmailId"
+            android:inputType="textEmailAddress"
+            />
+
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/eMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Number"
+            android:inputType="phone"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_marginTop="11dp"
+                android:layout_height="wrap_content"
+                android:text="YOUR BLOOD GROUP : " />
+            <Spinner
+                android:id="@+id/espinner1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:entries="@array/blood" />
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/etxt1"
+            android:layout_width="445dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="30dp"
+            android:text="GENDER : "
+            android:textSize="16dp" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/er1"
+                android:layout_width="129dp"
+                android:layout_height="wrap_content"
+                android:text="MALE"
+
+                />
+
+            <RadioButton
+                android:id="@+id/er2"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:text="FEMALE"
+
+                />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="158dp"
+                android:layout_marginTop="11dp"
+                android:layout_height="wrap_content"
+                android:text="YOUR AGE: " />
+            <Spinner
+                android:id="@+id/espinner2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+
+                />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/eplace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PLACE"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+        <EditText
+            android:id="@+id/ePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/eSubmit"
+            android:layout_width="367dp"
+            android:layout_height="58dp"
+            android:text="UPDATE"
+            tools:ignore="Invalidation"
+            tools:background="@color/colorPrimaryDark"
+            />
+
+
+    </LinearLayout>
+</ScrollView>
