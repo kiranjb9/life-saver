@@ -3,9 +3,18 @@ package com.example.kiran.carpool.Util.Models;
 public class posts {
     private String _id;
     private String Req_bloodG;
-    private String place;
     private String LatLong;
-    public String postedBy;
+    private String place;
+    private User u;
+
+
+    public User getU() {
+        return u;
+    }
+
+    public void setU(User u) {
+        this.u = u;
+    }
 
     public String get_id() {
         return _id;
@@ -39,11 +48,8 @@ public class posts {
         LatLong = latLong;
     }
 
-    public String getPostedBy() {
-        return postedBy;
-    }
-
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
+    @Override
+    public String toString() {
+        return "posts{" + "_id='" + _id + '\'' + ", Req_bloodG='" + Req_bloodG + '\'' + ", LatLong='" + LatLong + '\'' + ", place='" + place + '\'' + ", u=" + u + '}';
     }
 }

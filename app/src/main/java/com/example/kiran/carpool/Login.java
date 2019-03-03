@@ -28,8 +28,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        email = (EditText) findViewById(R.id.lemail);
-        pass = (EditText) findViewById(R.id.lpassword);
+        email = findViewById(R.id.lemail);
+        pass = findViewById(R.id.lpassword);
         button1 = findViewById(R.id.btn1);
         button2 = findViewById(R.id.btn2);
 
@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
             Gson gson = new Gson();
             String userJson = gson.toJson(newUser, User.class);
             System.out.println("User Json - " + userJson);
-            result = httpManager.postData("http://10.0.2.2:3000/login",userJson);
+            result = HttpManager.postData("http://10.0.2.2:3000/login",userJson);
             System.out.println("Result - " + result);
 
             return result;
@@ -93,6 +93,7 @@ public class Login extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("fname", jresponse.optString("fname"));
                 bundle.putString("id", jresponse.optString("_id"));
+                User.set_id(jresponse.optString("_id"));
                 bundle.putString("lname", jresponse.optString("lname"));
                 bundle.putString("mobile", jresponse.optString("mobilenumber"));
                 bundle.putString("email", jresponse.optString("email"));

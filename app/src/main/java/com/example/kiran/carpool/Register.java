@@ -36,16 +36,16 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        fname= (EditText) findViewById(R.id.FirstName);
-       lname= (EditText) findViewById(R.id.LastName);
-      email = (EditText) findViewById(R.id.Email);
-        mobilenumber = (EditText) findViewById(R.id.MobileNumber);
-        pass = (EditText) findViewById(R.id.Password);
+        fname= findViewById(R.id.FirstName);
+       lname= findViewById(R.id.LastName);
+      email = findViewById(R.id.Email);
+        mobilenumber = findViewById(R.id.MobileNumber);
+        pass = findViewById(R.id.Password);
         rb1= findViewById(R.id.r1);
         rb2=findViewById(R.id.r2);
         place = findViewById(R.id.place);
-         mySpinner1 = (Spinner) findViewById(R.id.spinner1);
-        mySpinner2 = (Spinner) findViewById(R.id.spinner2);
+         mySpinner1 = findViewById(R.id.spinner1);
+        mySpinner2 = findViewById(R.id.spinner2);
         rb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +99,7 @@ public class Register extends AppCompatActivity {
         v2 = mySpinner2.getSelectedItemPosition();
         System.out.println("pos2" + mySpinner2.getSelectedItemPosition());
         //submitt
-        button = (Button) findViewById(R.id.Submit);
+        button = findViewById(R.id.Submit);
         button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -123,7 +123,7 @@ public class Register extends AppCompatActivity {
             newUser.setEmail(Vemail);
             newUser.setMobilenumber(Vmobile);
             newUser.setPass(Vpass);
-            newUser.setReq_bloodG(SpinnerText1);
+            newUser.setBloodG(SpinnerText1);
             newUser.setAge(SpinnerText2);
             newUser.setPlace(Vplace);
             newUser.setGender(gender);
@@ -142,7 +142,7 @@ class RegisterUser extends AsyncTask<Void, Void, String> {
         Gson gson = new Gson();
         String userJson = gson.toJson(newUser, User.class);
         System.out.println("User Json - " + userJson);
-        result = httpManager.postData(getResources().getString(R.string.serviceUrl)+"/insertUserData",userJson);
+        result = HttpManager.postData(getResources().getString(R.string.serviceUrl)+"/insertUserData",userJson);
         System.out.println("Result - " + result);
 
         return result;

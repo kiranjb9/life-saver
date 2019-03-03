@@ -1,32 +1,26 @@
 package com.example.kiran.carpool.Util.Models;
 
+import java.util.ArrayList;
+
 public class User {
-    private String _id;
+    private static String _id;
     private String fname;
     private String lname;
     private String email;
     private String mobilenumber;
     private String pass;
-    private String Req_bloodG;
-    private Allposts postedBy;
+    private String bloodG;
     private String age;
     private String gender;
-    private  String place;
+    private String place;
+    public ArrayList<posts> posts;
 
-    public String get_id() {
+    public static String get_id() {
         return _id;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
-    }
-
-    public Allposts getPostedBy() {
-        return postedBy;
-    }
-
-    public void setPostedBy(Allposts postedBy) {
-        this.postedBy = postedBy;
+    public static void set_id(String _id) {
+        User._id = _id;
     }
 
     public String getFname() {
@@ -69,12 +63,12 @@ public class User {
         this.pass = pass;
     }
 
-    public String getReq_bloodG() {
-        return Req_bloodG;
+    public String getBloodG() {
+        return bloodG;
     }
 
-    public void setReq_bloodG(String req_bloodG) {
-        Req_bloodG = req_bloodG;
+    public void setBloodG(String bloodG) {
+        this.bloodG = bloodG;
     }
 
     public String getAge() {
@@ -99,5 +93,13 @@ public class User {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public ArrayList<com.example.kiran.carpool.Util.Models.posts> getPosts(User item) {
+        return posts;
+    }
+
+    public void setPosts(ArrayList<com.example.kiran.carpool.Util.Models.posts> posts) {
+        this.posts = posts;
     }
 }

@@ -46,15 +46,15 @@ public class ListAdapter extends ArrayAdapter<User>{
         TextView place = itemView.findViewById(R.id.Listplace);
         TextView Phno=itemView.findViewById(R.id.ListContact);
 
-        System.out.println("entered try");
 
         try {
-            Fname.setText(user.getPostedBy().getFname()+" "+user.getPostedBy().getLname());
+            Fname.setText(user.getFname()+" "+user.getLname());
 
-
-            RBG.setText(user.getReq_bloodG());
-            place.setText(user.getPlace());
-            Phno.setText(user.getPostedBy().getMobilenumber());
+            System.out.println("##############################            "+user.getPosts(getItem(0)).iterator());
+//
+//            RBG.setText(user.getP().getReq_bloodG());
+//            place.setText(user.getP().getPlace());
+            Phno.setText(user.getMobilenumber());
 
             //Email.setText(list.get(position).getString("email"));
 
@@ -64,8 +64,7 @@ public class ListAdapter extends ArrayAdapter<User>{
 
             // Course.setText(list.get(position).getString("course"));
 
-            System.out.println("FNAME........................................................n"+user.getPostedBy().getMobilenumber());
-            System.out.println("entered itenView"+itemView);
+
         } catch (Exception e) {
             System.out.println("ERROR"+e);
             e.printStackTrace();

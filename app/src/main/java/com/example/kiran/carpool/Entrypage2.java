@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kiran.carpool.Util.HttpManager;
-import com.example.kiran.carpool.Util.Models.Allposts;
+
 import com.example.kiran.carpool.Util.Models.User;
 import com.example.kiran.carpool.Util.Models.posts;
 import com.google.android.gms.common.api.Status;
@@ -41,7 +41,8 @@ public class Entrypage2 extends Fragment {
     ArrayAdapter<CharSequence> adapter1;
     Button button;
     posts p = new posts();
-    Allposts ap = new Allposts();
+    User user = new User();
+
     public Entrypage2() {
         // Required empty public constructor
     }
@@ -118,7 +119,6 @@ public class Entrypage2 extends Fragment {
                 p.setReq_bloodG(SpinnerText1);
                 p.setPlace(Hospital);
                 p.setLatLong(LngLat);
-                p.setPostedBy(By);
 
                 return true;
             }
@@ -149,7 +149,7 @@ public class Entrypage2 extends Fragment {
             Gson gson = new Gson();
             String userJson = gson.toJson(p, posts.class);
             System.out.println("User Json - " + userJson);
-            result = HttpManager.postData(getResources().getString(R.string.serviceUrl)+"/posts",userJson);
+            result = HttpManager.postData(getResources().getString(R.string.serviceUrl)+"/posts/"+ User.get_id(),userJson);
             System.out.println("Result - " + result);
 
             return result;
@@ -160,11 +160,13 @@ public class Entrypage2 extends Fragment {
             if (result != null && !result.isEmpty()) {
                 System.out.println("Result - " + result);
 
-                Bundle b = new Bundle();
-                b.putInt("status", 1);
-                Intent i = new Intent(getActivity(), Nav.class);
-                i.putExtras(b);
-                startActivity(i);
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("fname", bundle1.getString(("fname")));
+                bundle1.putString("email", bundle1.getString("email"));
+                Intent myIntent = new Intent(getActivity(), Nav.class);
+                myIntent.putExtras(bundle1);
+                startActivity(myIntent);
+
             }
 
         }
