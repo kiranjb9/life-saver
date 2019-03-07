@@ -1,19 +1,36 @@
 package com.example.kiran.carpool.Util.Models;
 
-public class posts {
+public class Posts {
     private String _id;
     private String Req_bloodG;
     private String LatLong;
     private String place;
-    private User u;
+    private User postedBy;
+    private  String Date;
+    private  String Time;
 
-
-    public User getU() {
-        return u;
+    public String getDate() {
+        return Date;
     }
 
-    public void setU(User u) {
-        this.u = u;
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public User getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(User postedBy) {
+        this.postedBy = postedBy;
     }
 
     public String get_id() {
@@ -48,8 +65,5 @@ public class posts {
         LatLong = latLong;
     }
 
-    @Override
-    public String toString() {
-        return "posts{" + "_id='" + _id + '\'' + ", Req_bloodG='" + Req_bloodG + '\'' + ", LatLong='" + LatLong + '\'' + ", place='" + place + '\'' + ", u=" + u + '}';
-    }
+
 }

@@ -5,23 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kiran.carpool.R;
+import com.example.kiran.carpool.Util.Models.Posts;
 import com.example.kiran.carpool.Util.Models.User;
 
 
 import java.util.List;
 
-public class ListAdapter extends ArrayAdapter<User>{
-
+public class ListAdapter extends ArrayAdapter<Posts>{
+     ImageView mImageView;
     int vg;
 
-    List<User> userList;
+    List<Posts> userList;
 
     Context context;
 
-    public ListAdapter(Context context, int activity, List<User> list){
+    public ListAdapter(Context context, int activity, List<Posts> list){
 
         super(context,activity,list);
 
@@ -39,22 +41,29 @@ public class ListAdapter extends ArrayAdapter<User>{
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View itemView = inflater.inflate(vg, parent, false);
-        User user = userList.get(position);
+        Posts p = userList.get(position);
 
         TextView Fname=itemView.findViewById(R.id.ListFname);
         TextView RBG = itemView.findViewById(R.id.ListBloodG);
         TextView place = itemView.findViewById(R.id.Listplace);
-        TextView Phno=itemView.findViewById(R.id.ListContact);
 
+        TextView dateTime = itemView.findViewById(R.id.datetime);
 
         try {
-            Fname.setText(user.getFname()+" "+user.getLname());
+            mImageView = convertView.findViewById(R.id.girl);
+            if(p.getPostedBy().getGender()=="Female"){
+                mImageView.setImageResource(R.drawable.girl);
+                System.out.println(p.getPostedBy().getGender());
+            }
+            if(p.getPostedBy().getGender()=="male") {
+                mImageView.setImageResource(R.drawable.boy);
+                System.out.println(p.getPostedBy().getGender());
+            }
+            Fname.setText(p.getPostedBy().getFname() + " " + p.getPostedBy().getLname() + "\n" + p.getPostedBy().getMobilenumber());
+            RBG.setText(p.getReq_bloodG());
+          place.setText(p.getPlace());
 
-            System.out.println("##############################            "+user.getPosts(getItem(0)).iterator());
-//
-//            RBG.setText(user.getP().getReq_bloodG());
-//            place.setText(user.getP().getPlace());
-            Phno.setText(user.getMobilenumber());
+            dateTime.setText(p.getDate() + "  " + p.getTime());
 
             //Email.setText(list.get(position).getString("email"));
 

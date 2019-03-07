@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.kiran.carpool.Util.HttpManager;
 
 import com.example.kiran.carpool.Util.Models.User;
-import com.example.kiran.carpool.Util.Models.posts;
+import com.example.kiran.carpool.Util.Models.Posts;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.Place;
@@ -40,7 +40,7 @@ public class Entrypage2 extends Fragment {
     String SpinnerText1="",Hospital,result,LngLat,By;
     ArrayAdapter<CharSequence> adapter1;
     Button button;
-    posts p = new posts();
+    Posts p = new Posts();
     User user = new User();
 
     public Entrypage2() {
@@ -147,7 +147,7 @@ public class Entrypage2 extends Fragment {
         protected String doInBackground(Void... params) {
             HttpManager httpManager = new HttpManager(getActivity());
             Gson gson = new Gson();
-            String userJson = gson.toJson(p, posts.class);
+            String userJson = gson.toJson(p, Posts.class);
             System.out.println("User Json - " + userJson);
             result = HttpManager.postData(getResources().getString(R.string.serviceUrl)+"/posts/"+ User.get_id(),userJson);
             System.out.println("Result - " + result);

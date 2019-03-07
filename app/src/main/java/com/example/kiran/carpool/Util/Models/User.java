@@ -1,6 +1,6 @@
 package com.example.kiran.carpool.Util.Models;
 
-import java.util.ArrayList;
+
 
 public class User {
     private static String _id;
@@ -13,7 +13,24 @@ public class User {
     private String age;
     private String gender;
     private String place;
-    public ArrayList<posts> posts;
+    private  String Date;
+    private  String Time;
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
 
     public static String get_id() {
         return _id;
@@ -95,11 +112,5 @@ public class User {
         this.place = place;
     }
 
-    public ArrayList<com.example.kiran.carpool.Util.Models.posts> getPosts(User item) {
-        return posts;
-    }
 
-    public void setPosts(ArrayList<com.example.kiran.carpool.Util.Models.posts> posts) {
-        this.posts = posts;
-    }
 }

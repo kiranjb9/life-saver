@@ -2,18 +2,22 @@ package com.example.kiran.carpool;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toolbar;
 
 import com.example.kiran.carpool.Util.HttpManager;
 import com.example.kiran.carpool.Util.ListAdapter;
+import com.example.kiran.carpool.Util.Models.Posts;
 import com.example.kiran.carpool.Util.Models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,7 +26,7 @@ import java.util.List;
 
 
 public class entryPage extends Fragment {
-
+    Toolbar navView ;
     public entryPage() {
     // Required empty public constructor
 }
@@ -31,12 +35,12 @@ public class entryPage extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         context = getActivity();
         System.out.println("FragmentListUser");
         View view = inflater.inflate(R.layout.list1, container, false);
-        listV = (ListView) view.findViewById(R.id.simpleListView);
+
+
+        listV = view.findViewById(R.id.simpleListView);
         RegisterUser registerUser=new RegisterUser();
         registerUser.execute();
 
@@ -48,7 +52,7 @@ class RegisterUser extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         HttpManager httpManager = new HttpManager(getActivity());
-        String result = httpManager.getData(getResources().getString(R.string.serviceUrl) + "/getalldata");
+        String result = HttpManager.getData(getResources().getString(R.string.serviceUrl) + "/getalldata");
         return result;
     }
 
@@ -56,7 +60,7 @@ class RegisterUser extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         System.out.println("Result - "+result);
         Gson gson = new Gson();
-        final List<User> userList = gson.fromJson(result,new TypeToken<List<User>>() {}.getType());
+        final List<Posts> userList = gson.fromJson(result,new TypeToken<List<Posts>>() {}.getType());
 
         if(TextUtils.isEmpty(result)){
 
@@ -67,10 +71,6 @@ class RegisterUser extends AsyncTask<Void, Void, String> {
 
                 ListAdapter adapter = new ListAdapter(context,R.layout.my_list1,userList);
                 listV.setAdapter(adapter);
-
-
-
-
             }
            /*jsonArray=  getJSonData(result);
             ArrayList<JSONObject> listItems= getArrayListFromJSONArray(jsonArray);
